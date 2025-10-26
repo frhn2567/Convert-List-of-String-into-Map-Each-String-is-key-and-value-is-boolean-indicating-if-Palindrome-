@@ -1,0 +1,25 @@
+import java.util.stream.*;
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	 List<String> list=Arrays.asList("level","apple","radar","banana","madam");
+      if (list == null || list.isEmpty()) {
+            System.out.println("The list is empty. Nothing to validate.");
+            return;
+        }
+        
+        boolean hasEmptyWord = list.stream().anyMatch(str -> str == null || str.trim().isEmpty());
+        if (hasEmptyWord) {
+            System.out.println("The list contains empty or null words. Please fix the input.");
+            return;
+        }
+           Map<String,Boolean> palindromeMap=list.stream()
+            .collect(Collectors.toMap(str->str,w->w.contentEquals(new StringBuilder(w).reverse())));
+        
+        System.out.println("Map is : "+palindromeMap);
+           
+    
+    
+	}
+}
